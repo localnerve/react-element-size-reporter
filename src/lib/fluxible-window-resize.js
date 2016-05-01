@@ -1,0 +1,49 @@
+/***
+ * Copyright (c) 2016 Alex Grant (@localnerve), LocalNerve LLC
+ * Copyrights licensed under the BSD License.
+ * See the accompanying LICENSE file for terms.
+ *
+ * A higher order component to execute fluxible action on window resize.
+ */
+import React from 'react';
+import inherits from 'inherits';
+import { windowResizeReporter } from './window-resize';
+
+/**
+ * Factory to create the WindowResizeReporter HOC for fluxible.
+ *
+ * @param {Component} Component - The react class to wrap.
+ * @param {String} selector - The selector to find the DOM elements to report
+ * size on.
+ * @param {Function} sizeAction - A size action creator. It will receive an
+ * Object that contains the size report data from size-reporter.
+ * @param {Object} [options] - Size Reporter options AND window resize options.
+ */
+export function fluxibleWindowResizeReporter (
+  Component, selector, sizeAction, options
+) {
+  /**
+   * @constructor
+   */
+  function FluxibleWindowResizeReporter () {
+    React.Component.apply(this, arguments);
+  }
+
+  inherits(
+    FluxibleWindowResizeReporter,
+    windowResizeReporter(Component, selector, options)
+  );
+
+  FluxibleWindowResizeReporter.displayName = 'FluxibleWindowResizeReporter';
+  FluxibleWindowResizeReporter.contextTypes = {
+    executeAction: React.PropTypes.func.isRequired
+  };
+
+  Object.assign(FluxibleWindowResizeReporter.prototype, {
+    actionExecutor: function (sizeData) {
+      this.context.executeAction(sizeAction, sizeData);
+    }
+  });
+
+  return FluxibleWindowResizeReporter;
+}
