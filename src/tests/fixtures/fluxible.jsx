@@ -6,27 +6,20 @@
 import React from 'react';
 import { fluxibleWindowResizeReporter } from '../../lib';
 
-let sizeAction = function () {};
-export function setMockAction (action) {
-  sizeAction = action;
-}
+export function createFluxibleTestComponent (sizeAction) {
+  const FluxibleTestComponent = React.createClass({
+    render: function () {
+      return (
+        <div className="contained">
+          <span>This is a test message</span>
+        </div>
+      );
+    }
+  });
 
-let FluxibleTestComponent = React.createClass({
-  render: function () {
-    return (
-      <div className="contained">
-        <span>This is a test message</span>
-      </div>
-    );
-  }
-});
-
-FluxibleTestComponent = fluxibleWindowResizeReporter(
-  FluxibleTestComponent,
-  '.contained',
-  sizeAction
-);
-
-export {
-  FluxibleTestComponent
+  return fluxibleWindowResizeReporter(
+    FluxibleTestComponent,
+    '.contained',
+    sizeAction
+  );
 }

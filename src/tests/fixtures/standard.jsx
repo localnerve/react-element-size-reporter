@@ -6,33 +6,21 @@
 import React from 'react';
 import { windowResizeReporter } from '../../lib';
 
-let mockActionExecutor = null;
-function actionExecutor () {
-  if (mockActionExecutor) {
-    mockActionExecutor.apply(this, arguments);
-  }
-}
-export function setMockActionExecutor (actionExecutor) {
-  mockActionExecutor = actionExecutor;
-}
+export function createStandardTestComponent (actionExecutor) {
+  const StandardTestComponent = React.createClass({
+    render: function () {
+      return (
+        <div className="contained">
+          <span>This is a test message</span>
+        </div>
+      );
+    }
+  });
 
-let StandardTestComponent = React.createClass({
-  render: function () {
-    return (
-      <div className="contained">
-        <span>This is a test message</span>
-      </div>
-    );
-  }
-});
-
-StandardTestComponent = windowResizeReporter(
-  StandardTestComponent,
-  '.contained', {
-    actionExecutor
-  }
-);
-
-export {
-  StandardTestComponent
+  return windowResizeReporter(
+    StandardTestComponent,
+    '.contained', {
+      actionExecutor
+    }
+  )
 }

@@ -47,7 +47,7 @@ export function windowResizeReporter (Component, selector, options) {
 
   WindowResizeReporter.displayName = 'WindowResizeReporter';
   WindowResizeReporter.propTypes = {
-    actionExecutor: React.PropTypes.function
+    actionExecutor: React.PropTypes.func
   };
 
   Object.assign(WindowResizeReporter.prototype, {
@@ -65,6 +65,12 @@ export function windowResizeReporter (Component, selector, options) {
     componentDidMount: function () {
       const actionExecutor = options.actionExecutor || this.actionExecutor ||
         this.props.actionExecutor;
+
+      if (!actionExecutor) {
+        throw new Error(
+          'actionExecutor not supplied via factory, instance, or props'
+        );
+      }
 
       const reporter = createSizeReporter(
         selector, actionExecutor, options.sizeReporter

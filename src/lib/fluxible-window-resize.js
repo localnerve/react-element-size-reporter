@@ -22,11 +22,19 @@ import { windowResizeReporter } from './window-resize';
 export function fluxibleWindowResizeReporter (
   Component, selector, sizeAction, options
 ) {
+  if (typeof sizeAction !== 'function') {
+    throw new Error(
+      'Invalid sizeAction supplied to fluxibleWindowResizeReporter'
+    );
+  }
+
   /**
    * @constructor
    */
   function FluxibleWindowResizeReporter () {
     React.Component.apply(this, arguments);
+    this.actionExecutor =
+      FluxibleWindowResizeReporter.prototype.actionExecutor.bind(this);
   }
 
   inherits(
