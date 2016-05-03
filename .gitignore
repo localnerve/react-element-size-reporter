@@ -22,5 +22,5 @@ node_modules
 .nyc_output/
 /coverage
 /output
-/index.js
+/lib
 tmp

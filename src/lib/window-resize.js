@@ -10,7 +10,7 @@
 import React from 'react';
 import inherits from 'inherits';
 import debounce from 'lodash/debounce';
-import createSizeReporter from 'size-reporter';
+import createSizeReporter from 'element-size-reporter';
 
 const defaultResizeWait = 100;
 
@@ -21,18 +21,20 @@ const defaultResizeWait = 100;
  * @param {String} selector - The selector of the DOM element to report
  * size on.
  * @param {Object} [options] - WindowResizeReporter options.
- * @param {Function} [options.actionExecutor] - A function to execute an action
+ * @param {Function} [options.actionCreator] - A function to execute an action
  * on resize. It will receive an Object that contains the size report data.
- * If omitted, looks for actionExecutor:
- *   1. On instance.
- *   2. In props.
+ * If omitted, looks for actionCreator:
+ *   1. In props.
+ *   2. On instance.
  * @param {Number} [options.resizeWait] - Trailing debounce resize wait
  * (milliseconds).
  * @param {Object} [options.sizeReporter] - sizeReporter options.
+ * @returns {Component} A higher order component with a window resize element
+ * reporter.
  */
 export function windowResizeReporter (Component, selector, options) {
   options = options || {};
-  options.resizeWait = typeof options.resizeWait === 'undefined' ?
+  options.resizeWait = typeof options.resizeWait !== 'number' ?
     defaultResizeWait : options.resizeWait;
 
   /**
@@ -47,7 +49,7 @@ export function windowResizeReporter (Component, selector, options) {
 
   WindowResizeReporter.displayName = 'WindowResizeReporter';
   WindowResizeReporter.propTypes = {
-    actionExecutor: React.PropTypes.func
+    actionCreator: React.PropTypes.func
   };
 
   Object.assign(WindowResizeReporter.prototype, {
@@ -59,21 +61,22 @@ export function windowResizeReporter (Component, selector, options) {
     },
 
     /**
-     * Queue actionExecutor task on componentDidMount.
-     * Also, run actionExecutor on window resize events.
+     * Queue actionCreator task on componentDidMount.
+     * Also, run actionCreator on window resize events.
      */
     componentDidMount: function () {
-      const actionExecutor = options.actionExecutor || this.actionExecutor ||
-        this.props.actionExecutor;
+      const actionCreator = options.actionCreator ||
+        this.props.actionCreator ||
+        this.actionCreator;
 
-      if (!actionExecutor) {
+      if (!actionCreator) {
         throw new Error(
-          'actionExecutor not supplied via factory, instance, or props'
+          'actionCreator not supplied via factory, instance, or props'
         );
       }
 
       const reporter = createSizeReporter(
-        selector, actionExecutor, options.sizeReporter
+        selector, actionCreator, options.sizeReporter
       );
 
       this._resizeHandler = debounce(reporter, options.resizeWait);

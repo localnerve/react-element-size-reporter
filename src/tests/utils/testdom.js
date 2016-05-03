@@ -48,32 +48,3 @@ export function domStop (globalKeys) {
   delete global.window;
   delete global.navigator;
 }
-
-const savedItems = {
-  window: {
-  },
-  document: {
-  }
-};
-
-/**
- * patch document and window for the component under test
- */
-export function mockStart (patch) {
-  savedItems.window.pageYOffset = global.window.pageYOffset;
-  savedItems.document.querySelector = global.document.querySelector;
-  savedItems.document.clientTop = global.document.documentElement.clientTop;
-
-  global.window.pageYOffset = patch.pageYOffset;
-  global.document.querySelector = patch.querySelector;
-  global.document.documentElement.clientTop = patch.clientTop;
-}
-
-/**
- * restore document and window for the component under test
- */
-export function mockEnd () {
-  global.window.pageYOffset = savedItems.window.pageYOffset;
-  global.document.querySelector = savedItems.document.querySelector;
-  global.document.documentElement.clientTop = savedItems.document.clientTop;
-}

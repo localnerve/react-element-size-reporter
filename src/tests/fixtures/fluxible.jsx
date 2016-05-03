@@ -6,7 +6,7 @@
 import React from 'react';
 import { fluxibleWindowResizeReporter } from '../../lib';
 
-export function createFluxibleTestComponent (sizeAction) {
+export function createFluxibleTestComponent (sizeAction, options) {
   const FluxibleTestComponent = React.createClass({
     render: function () {
       return (
@@ -20,6 +20,7 @@ export function createFluxibleTestComponent (sizeAction) {
   return fluxibleWindowResizeReporter(
     FluxibleTestComponent,
     '.contained',
-    sizeAction
+    sizeAction,
+    options
   );
 }

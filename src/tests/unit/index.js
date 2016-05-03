@@ -2,16 +2,17 @@
  * Copyright (c) 2016 Alex Grant (@localnerve), LocalNerve LLC
  * Copyrights licensed under the BSD License. See the accompanying LICENSE file for terms.
  */
-/* global before, beforeEach, after, afterEach, describe, it */
+/* global before, after, describe, it, require */
 import { expect } from 'chai';
 import React from 'react';
 import { provideContext, createElementWithContext }
   from 'fluxible-addons-react';
 import Fluxible from 'fluxible';
-import { domStart, domStop, mockStart, mockEnd } from '../utils/testdom';
+import { domStart, domStop } from '../utils/testdom';
+import { mocks } from '../mocks';
 import { createFluxibleTestComponent } from '../fixtures/fluxible';
 import { createStandardTestComponent } from '../fixtures/standard';
-import { windowResizeReporter,fluxibleWindowResizeReporter } from '../../lib';
+import { windowResizeReporter, fluxibleWindowResizeReporter } from '../../lib';
 
 describe('react size reporter', () => {
   let testUtils;
@@ -41,19 +42,21 @@ describe('react size reporter', () => {
         const component = new windowResizeReporter();
         expectedMembers(component);
         expect(component.propTypes).to.be.an('object').that.is.not.empty;
-        expect(component.propTypes).to.have.property('actionExecutor');
+        expect(component.propTypes).to.have.property('actionCreator');
       });
     });
 
-    it('should render react components, actionExecutor via props', () => {
+    it('should render react components, actionCreator via props', (done) => {
       const el = React.createElement(createStandardTestComponent(), {
-        actionExecutor: function () {}
+        actionCreator: function () {
+          expect(result.textContent).to.match(/test message/);
+          done();
+        }
       });
       const fragment = testUtils.renderIntoDocument(el);
       const result = testUtils.findRenderedDOMComponentWithClass(
         fragment, 'contained'
       );
-      expect(result.textContent).to.match(/test message/);
     });
 
     it('should execute action from factory input', (done) => {
@@ -65,7 +68,7 @@ describe('react size reporter', () => {
 
     it('should execute action from property input', (done) => {
       const el = React.createElement(createStandardTestComponent(), {
-        actionExecutor: () => {
+        actionCreator: () => {
           done();
         }
       });
@@ -78,9 +81,9 @@ describe('react size reporter', () => {
         constructor () {
           super();
           this.state = {};
-          this.actionExecutor = this.actionExecutor.bind(this);
+          this.actionCreator = this.actionCreator.bind(this);
         }
-        actionExecutor () {
+        actionCreator () {
           done();
         }
       }
@@ -89,7 +92,7 @@ describe('react size reporter', () => {
       testUtils.renderIntoDocument(el);
     });
 
-    it('should throw if no actionExecutor defined', () => {
+    it('should throw if no actionCreator defined', () => {
       const el = React.createElement(createStandardTestComponent());
       expect(function () {
         testUtils.renderIntoDocument(el);
@@ -105,6 +108,48 @@ describe('react size reporter', () => {
       );
       testUtils.renderIntoDocument(el);
     });
+
+    describe('options', () => {
+      let mockDebounce, mockSizeReporter, mockWindowResizeReporter;
+
+      before('options', () => {
+        mocks.windowResizeReporter.begin();
+        mockDebounce = require('lodash/debounce');
+        mockSizeReporter = require('element-size-reporter');
+        mockWindowResizeReporter =
+          require('../../lib/window-resize').windowResizeReporter;
+      });
+
+      after('options', () => {
+        mocks.windowResizeReporter.end();
+      });
+
+      it('should use debounce wait option if supplied', (done) => {
+        const resizeWait = 20;
+        const el = React.createElement(
+          createStandardTestComponent(() => {
+            const actualResizeWait = mockDebounce('_getResizeWait');
+            expect(actualResizeWait).to.equal(resizeWait);
+            done();
+          }, resizeWait, null, mockWindowResizeReporter)
+        );
+        testUtils.renderIntoDocument(el);
+      });
+
+      it('should set element-size-reporter options', (done) => {
+        const resizeReporterOptions = {
+          test: 'option'
+        };
+        const el = React.createElement(
+          createStandardTestComponent(() => {
+            const actualSizeReporterOptions = mockSizeReporter('_getOptions');
+            expect(actualSizeReporterOptions).to.eql(resizeReporterOptions);
+            done();
+          }, undefined, resizeReporterOptions, mockWindowResizeReporter)
+        );
+        testUtils.renderIntoDocument(el);
+      });
+    });
   });
 
   describe('fluxible window resize', () => {
@@ -117,9 +162,9 @@ describe('react size reporter', () => {
       });
     });
 
-    function render (sizeAction) {
+    function render (sizeAction, options) {
       const component = provideContext(
-        createFluxibleTestComponent(sizeAction)
+        createFluxibleTestComponent(sizeAction, options)
       );
       const context = (
         new Fluxible({ component })
@@ -143,7 +188,18 @@ describe('react size reporter', () => {
       });
     });
 
-    it.skip('should accumulate if multiple reporters in same group', (done) => {
+    it('should remove actionCreator if supplied', (done) => {
+      render(() => {
+        done();
+      }, {
+        actionCreator: () => {
+          done(new Error('Unexpected action invocation'));
+        }
+      });
+    });
+
+    it('should throw if no sizeAction is supplied', () => {
+      expect(render).to.throw(Error);
     });
   });
 });

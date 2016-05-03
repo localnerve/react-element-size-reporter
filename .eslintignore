@@ -3,5 +3,5 @@
 coverage/
 output/
 node_modules/
-index.js
+lib/
 tmp

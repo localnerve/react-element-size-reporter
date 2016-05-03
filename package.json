@@ -1,23 +1,23 @@
 {
-  "name": "react-size-reporter",
-  "version": "0.1.0",
+  "name": "react-element-size-reporter",
+  "version": "0.2.0",
   "description": "Higher order React components to report contained DOM element sizes",
-  "main": "index.js",
+  "main": "lib",
   "scripts": {
     "test": "mocha src/tests/unit --recursive --reporter spec --compilers js:babel-register",
     "test:debug": "rimraf output/ && babel ./src -d output -s inline && mocha output/tests/unit --recursive --reporter spec --debug-brk",
-    "test:cover": "cross-env BABEL_ENV=cover NYC_CWD=src nyc --reporter=lcov npm test",
-    "build": "npm run lint && npm test && babel src/lib/index.js -o index.js",
+    "test:cover": "rimraf .nyc_output/ && cross-env BABEL_ENV=cover NYC_CWD=src nyc --reporter=lcov npm test",
+    "build": "npm run lint && npm test && babel src/lib/ -d lib/",
     "lint": "eslint .",
-    "prepublish": "npm run build",
-    "validate": "npm ls"
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/localnerve/react-size-reporter.git"
+    "url": "git+https://github.com/localnerve/react-element-size-reporter.git"
   },
   "keywords": [
     "react",
+    "fluxible",
     "size",
     "position",
     "width",
@@ -29,9 +29,9 @@
   "author": "Alex Grant (@localnerve)",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/localnerve/react-size-reporter/issues"
+    "url": "https://github.com/localnerve/react-element-size-reporter/issues"
   },
-  "homepage": "https://github.com/localnerve/react-size-reporter#readme",
+  "homepage": "https://github.com/localnerve/react-element-size-reporter#readme",
   "nyc": {
     "include": [
       "/"
@@ -50,6 +50,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-register": "^6.7.2",
     "chai": "^3.5.0",
+    "coveralls": "^2.11.9",
     "cross-env": "^1.0.7",
     "eslint": "^2.8.0",
     "eslint-plugin-react": "^5.0.1",
@@ -57,6 +58,7 @@
     "fluxible-addons-react": "^0.2.8",
     "jsdom": "^8.4.1",
     "mocha": "^2.4.5",
+    "mockery": "^1.6.2",
     "nyc": "^6.4.0",
     "precommit-hook": "^3.0.0",
     "react-addons-test-utils": "^15.0.1",
@@ -67,9 +69,9 @@
     "inherits": "^2.0.1",
     "lodash": "^4.11.1",
     "react": "^15.0.1",
-    "size-reporter": "localnerve/size-reporter"
+    "element-size-reporter": "^0.3.1"
   },
   "engines": {
-    "node": "4.x || 5.x"
+    "node": ">= 4.x"
   }
 }

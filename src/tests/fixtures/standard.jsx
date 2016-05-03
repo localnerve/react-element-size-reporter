@@ -6,7 +6,9 @@
 import React from 'react';
 import { windowResizeReporter } from '../../lib';
 
-export function createStandardTestComponent (actionExecutor) {
+export function createStandardTestComponent (
+  actionCreator, resizeWait, sizeReporterOptions, mockWindowResizeReporter
+) {
   const StandardTestComponent = React.createClass({
     render: function () {
       return (
@@ -17,10 +19,14 @@ export function createStandardTestComponent (actionExecutor) {
     }
   });
 
-  return windowResizeReporter(
+  const reporterFactory = mockWindowResizeReporter || windowResizeReporter;
+
+  return reporterFactory(
     StandardTestComponent,
     '.contained', {
-      actionExecutor
+      actionCreator,
+      resizeWait,
+      sizeReporter: sizeReporterOptions
     }
-  )
+  );
 }
