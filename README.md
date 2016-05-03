@@ -23,8 +23,11 @@ createFluxibleWindowResizeReporter(Component, selector, sizeAction, options)
 
 ### createWindowResizeReporter
 Generates size reports on the window resize event. A [Size Report](https://github.com/localnerve/element-size-reporter#size-report) is delivered to an action creator supplied by one of three methods. The first viable action creator found is used, here is the order:
+
 1. Action creator supplied in options, name `actionCreator`.
+
 2. Action creator supplied in props, name `actionCreator`.
+
 3. Action creator found on the Component instance (supplied by a derived class, method named `actionCreator`).
 
 #### Parameters
