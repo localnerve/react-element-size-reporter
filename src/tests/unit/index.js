@@ -112,12 +112,13 @@ describe('react size reporter', () => {
     describe('options', () => {
       let mockDebounce, mockSizeReporter, mockWindowResizeReporter;
 
-      before('options', () => {
+      before('options', (done) => {
         mocks.windowResizeReporter.begin();
         mockDebounce = require('lodash/debounce');
         mockSizeReporter = require('element-size-reporter');
         mockWindowResizeReporter =
           require('../../lib/window-resize').windowResizeReporter;
+        done();
       });
 
       after('options', () => {
