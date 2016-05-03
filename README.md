@@ -12,23 +12,19 @@ Uses [element-size-reporter](https://github.com/localnerve/element-size-reporter
 
 ## API
 ```javascript
-// Create a size reporter on window 'resize' event, reporting on DOM element
-// found by `selector`.
-createWindowResizeReporter(Component, selector, options)
+windowResizeReporter(Component, selector, options)
 
-// Create a size reporter on window 'resize' event, reporting on DOM element
-// found by `selector`. Use with [Fluxible](http://fluxible.io).
-createFluxibleWindowResizeReporter(Component, selector, sizeAction, options)
+fluxibleWindowResizeReporter(Component, selector, sizeAction, options)
 ```
 
-### createWindowResizeReporter
-Generates size reports on the window resize event. A [Size Report](https://github.com/localnerve/element-size-reporter#size-report) is delivered to an action creator supplied by one of three methods. The first viable action creator found is used, here is the order:
+### windowResizeReporter
+Creates a higher order component that reports on window 'resize' event. Reports on the element found by the supplied `selector`. When the window 'resize' event occurs, a [Size Report](https://github.com/localnerve/element-size-reporter#size-report) is delivered to an action creator supplied by one of three methods. The first viable action creator found is used, here is the search order:
 
 1. Action creator supplied in options, name `actionCreator`.
 
 2. Action creator supplied in props, name `actionCreator`.
 
-3. Action creator found on the Component instance (supplied by a derived class, method named `actionCreator`).
+3. Action creator found on the higher order component instance (can supplied by a derived class, method named `actionCreator`).
 
 #### Parameters
 `Component` {ReactComponent} - The React Component to render.
@@ -42,8 +38,8 @@ Generates size reports on the window resize event. A [Size Report](https://githu
 
   * `sizeReporter` {Object} - [element-size-reporter options](https://github.com/localnerve/element-size-reporter#options)
 
-### createFluxibleWindowResizeReporter
-Generates size reports on the window resize event. A [Size Report](https://github.com/localnerve/element-size-reporter#size-report) is delivered to the supplied `sizeAction` creator.
+### fluxibleWindowResizeReporter
+Same as [windowResizeReporter](#windowResizeReporter), but for use with [Fluxible](http://fluxible.io). Creates a higher order component that reports on window 'resize' event. Reports on the element found by the supplied `selector`. When the window 'resize' event occurs, a [Size Report](https://github.com/localnerve/element-size-reporter#size-report) is delivered to the supplied `sizeAction` creator.
 
 #### Parameters
 `Component` {ReactComponent} - The React Component to render.
@@ -52,7 +48,7 @@ Generates size reports on the window resize event. A [Size Report](https://githu
 
 `sizeAction` {Function} - The action creator that receives the [Size Report](https://github.com/localnerve/element-size-reporter#size-report).
 
-`options` {Object} - The window resize and reporting options. Same as [createWindowResizeReporter](#createWindowResizeReporter), except the actionCreator option is ignored - it is supplied explicitly via `sizeAction`.
+`options` {Object} - The window resize and reporting options. Same as [windowResizeReporter](#windowResizeReporter), except the actionCreator option is ignored - it is supplied explicitly via `sizeAction`.
 
 * `resizeWait` {Number} - Resize debouncer trailing wait in milliseconds. Defaults to 100ms.
 
