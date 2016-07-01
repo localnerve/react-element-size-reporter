@@ -52,7 +52,7 @@
     "chai": "^3.5.0",
     "coveralls": "^2.11.9",
     "cross-env": "^1.0.8",
-    "eslint": "^2.13.0",
+    "eslint": "^3.0.0",
     "eslint-plugin-react": "^5.2.2",
     "fluxible": "^1.1.0",
     "fluxible-addons-react": "^0.2.8",
