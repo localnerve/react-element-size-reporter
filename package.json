@@ -1,10 +1,10 @@
 {
   "name": "react-element-size-reporter",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Higher order React components to report contained DOM element sizes",
   "main": "lib",
   "scripts": {
-    "test": "mocha src/tests/unit --recursive --reporter spec --compilers js:babel-register",
+    "test": "npm run lint && mocha src/tests/unit --recursive --reporter spec --compilers js:babel-register",
     "test:debug": "rimraf output/ && babel ./src -d output -s inline && mocha output/tests/unit --recursive --reporter spec --debug-brk",
     "test:cover": "rimraf .nyc_output/ && cross-env BABEL_ENV=cover NYC_CWD=src nyc --reporter=lcov npm test",
     "build": "npm run lint && npm test && babel src/lib/ -d lib/",
@@ -39,12 +39,11 @@
     "report-dir": "coverage"
   },
   "pre-commit": [
-    "lint",
     "test"
   ],
   "devDependencies": {
     "babel-cli": "^6.10.1",
-    "babel-eslint": "^6.0.4",
+    "babel-eslint": "^6.1.0",
     "babel-plugin-__coverage__": "^11.0.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
@@ -52,11 +51,11 @@
     "chai": "^3.5.0",
     "coveralls": "^2.11.9",
     "cross-env": "^1.0.8",
-    "eslint": "^2.13.0",
+    "eslint": "^3.0.0",
     "eslint-plugin-react": "^5.2.2",
-    "fluxible": "^1.1.0",
+    "fluxible": "^1.2.0",
     "fluxible-addons-react": "^0.2.8",
-    "jsdom": "^9.2.1",
+    "jsdom": "^9.4.1",
     "mocha": "^2.5.3",
     "mockery": "^1.7.0",
     "nyc": "^6.6.1",
