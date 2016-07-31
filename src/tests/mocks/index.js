@@ -37,8 +37,7 @@ function mockModuleEnd (mocks) {
     pattern: 'element-size-reporter',
     module: elementSizeReporter
   }]
-}]
-.forEach(function (mockSpec) {
+}].forEach(function (mockSpec) {
   mocks[mockSpec.name] = {
     begin: function () {
       mockModuleBegin(mockSpec.mocks);

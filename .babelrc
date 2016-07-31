@@ -7,8 +7,8 @@
     "cover": {
       "plugins": [
         [
-          "__coverage__", {
-            "only": "src/lib"
+          "istanbul", {
+            "exclude": "src/tests"
           }
         ]
       ]
