@@ -61,7 +61,7 @@
     "nyc": "^6.6.1",
     "precommit-hook": "^3.0.0",
     "react-addons-test-utils": "^15.1.0",
-    "react-dom": "^15.1.0",
+    "react-dom": "^15.3.0",
     "rimraf": "^2.5.2"
   },
   "dependencies": {
