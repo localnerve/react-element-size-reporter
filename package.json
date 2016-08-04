@@ -1,6 +1,6 @@
 {
   "name": "react-element-size-reporter",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Higher order React components to report contained DOM element sizes",
   "main": "lib",
   "scripts": {
@@ -52,11 +52,11 @@
     "coveralls": "^2.11.12",
     "cross-env": "^2.0.0",
     "eslint": "^3.2.0",
-    "eslint-plugin-react": "^5.2.2",
+    "eslint-plugin-react": "^6.0.0",
     "fluxible": "^1.2.0",
     "fluxible-addons-react": "^0.2.8",
     "jsdom": "^9.4.1",
-    "mocha": "^2.5.3",
+    "mocha": "^3.0.0",
     "mockery": "^1.7.0",
     "nyc": "^7.1.0",
     "precommit-hook": "^3.0.0",
