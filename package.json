@@ -58,7 +58,7 @@
     "jsdom": "^9.4.1",
     "mocha": "^3.0.0",
     "mockery": "^1.7.0",
-    "nyc": "^7.1.0",
+    "nyc": "^8.1.0",
     "precommit-hook": "^3.0.0",
     "react-addons-test-utils": "^15.1.0",
     "react-dom": "^15.1.0",
