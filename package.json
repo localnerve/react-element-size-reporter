@@ -57,7 +57,7 @@
     "fluxible-addons-react": "^0.2.8",
     "jsdom": "^9.4.1",
     "mocha": "^3.0.0",
-    "mockery": "^1.7.0",
+    "mockery": "^2.0.0",
     "nyc": "^8.1.0",
     "precommit-hook": "^3.0.0",
     "react-addons-test-utils": "^15.1.0",
