@@ -1,6 +1,6 @@
 {
   "name": "react-element-size-reporter",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "description": "Higher order React components to report contained DOM element sizes",
   "main": "lib",
   "scripts": {
@@ -71,6 +71,6 @@
     "element-size-reporter": "^0.3.13"
   },
   "engines": {
-    "node": ">= 4.x"
+    "node": ">= 4"
   }
 }
