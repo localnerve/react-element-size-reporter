@@ -19,7 +19,7 @@ describe('react size reporter', () => {
 
   before('react size reporter', () => {
     domStart();
-    testUtils = require('react-addons-test-utils');
+    testUtils = require('react-dom/test-utils');
   });
 
   after('react size reporter', () => {

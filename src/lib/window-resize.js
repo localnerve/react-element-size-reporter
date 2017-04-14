@@ -8,6 +8,7 @@
  */
 /* global window */
 import React from 'react';
+import PropTypes from 'prop-types';
 import inherits from 'inherits';
 import debounce from 'lodash/debounce';
 import createSizeReporter from 'element-size-reporter';
@@ -49,7 +50,7 @@ export function windowResizeReporter (Component, selector, options) {
 
   WindowResizeReporter.displayName = 'WindowResizeReporter';
   WindowResizeReporter.propTypes = {
-    actionCreator: React.PropTypes.func
+    actionCreator: PropTypes.func
   };
 
   Object.assign(WindowResizeReporter.prototype, {

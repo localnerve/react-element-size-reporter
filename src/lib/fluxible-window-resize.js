@@ -6,6 +6,7 @@
  * A higher order component to execute fluxible action on window resize.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import inherits from 'inherits';
 import { windowResizeReporter } from './window-resize';
 
@@ -50,7 +51,7 @@ export function fluxibleWindowResizeReporter (
 
   FluxibleWindowResizeReporter.displayName = 'FluxibleWindowResizeReporter';
   FluxibleWindowResizeReporter.contextTypes = {
-    executeAction: React.PropTypes.func.isRequired
+    executeAction: PropTypes.func.isRequired
   };
 
   Object.assign(FluxibleWindowResizeReporter.prototype, {

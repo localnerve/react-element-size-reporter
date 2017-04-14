@@ -9,15 +9,15 @@ import { windowResizeReporter } from '../../lib';
 export function createStandardTestComponent (
   actionCreator, resizeWait, sizeReporterOptions, mockWindowResizeReporter
 ) {
-  const StandardTestComponent = React.createClass({
-    render: function () {
+  class StandardTestComponent extends React.Component {
+    render () {
       return (
         <div className="contained">
           <span>This is a test message</span>
         </div>
       );
     }
-  });
+  }
 
   const reporterFactory = mockWindowResizeReporter || windowResizeReporter;
 

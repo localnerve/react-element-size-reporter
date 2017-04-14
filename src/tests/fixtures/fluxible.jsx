@@ -7,15 +7,15 @@ import React from 'react';
 import { fluxibleWindowResizeReporter } from '../../lib';
 
 export function createFluxibleTestComponent (sizeAction, options) {
-  const FluxibleTestComponent = React.createClass({
-    render: function () {
+  class FluxibleTestComponent extends React.Component {
+    render () {
       return (
         <div className="contained">
           <span>This is a test message</span>
         </div>
       );
     }
-  });
+  }
 
   return fluxibleWindowResizeReporter(
     FluxibleTestComponent,
