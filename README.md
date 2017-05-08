@@ -1,5 +1,7 @@
 # React Element Size Reporter
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/localnerve/react-element-size-reporter.svg)](https://greenkeeper.io/)
+
 [![npm version](https://badge.fury.io/js/react-element-size-reporter.svg)](http://badge.fury.io/js/react-element-size-reporter)
 [![Build Status](https://travis-ci.org/localnerve/react-element-size-reporter.svg?branch=master)](https://travis-ci.org/localnerve/react-element-size-reporter)
 [![Coverage Status](https://coveralls.io/repos/github/localnerve/react-element-size-reporter/badge.svg?branch=master)](https://coveralls.io/github/localnerve/react-element-size-reporter?branch=master)
