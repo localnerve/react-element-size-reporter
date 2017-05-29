@@ -24,3 +24,5 @@ node_modules
 /output
 /lib
 tmp
+*.tgz
+/package
