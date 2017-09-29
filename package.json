@@ -68,7 +68,7 @@
     "lodash": "^4.13.1",
     "react": "^15.5.0",
     "prop-types": "^15.5.0",
-    "element-size-reporter": "^0.4.1"
+    "element-size-reporter": "^0.5.0"
   },
   "engines": {
     "node": ">= 6"
