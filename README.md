@@ -12,6 +12,9 @@
 
 Uses [element-size-reporter](https://github.com/localnerve/element-size-reporter) to report width, height, and top of contained DOM elements. Size Reports are logically group-able so that different components' DOM elements sizes can be accumulated together in a flux flow.
 
+## Demo and Example
+If you are interested in seeing demo code usage and/or a staged demo, please review [this brief thread](https://github.com/localnerve/react-element-size-reporter/issues/40) covering this topic.  
+
 ## API
 ```javascript
 windowResizeReporter(Component, selector, options)
