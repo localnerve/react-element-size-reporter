@@ -67,7 +67,7 @@
   "dependencies": {
     "inherits": "^2.0.3",
     "lodash": "^4.17.10",
-    "react": "^16.6.3",
+    "react": "^16.8.1",
     "prop-types": "^15.5.0",
     "element-size-reporter": "^0.6.0"
   },
