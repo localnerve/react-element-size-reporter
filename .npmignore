@@ -7,3 +7,4 @@ src
 .jshint*
 .travis*
 *.tgz
+tmp
