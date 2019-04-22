@@ -56,7 +56,7 @@
     "eslint-plugin-react": "^7.10.0",
     "fluxible": "^1.4.0",
     "fluxible-addons-react": "^0.2.13",
-    "jsdom": "^14.0.0",
+    "jsdom": "^15.0.0",
     "mocha": "^6.1.2",
     "mockery": "^2.0.0",
     "nyc": "^14.0.0",
