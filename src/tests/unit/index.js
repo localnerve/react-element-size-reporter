@@ -2,7 +2,7 @@
  * Copyright (c) 2016 - 2019 Alex Grant (@localnerve), LocalNerve LLC
  * Copyrights licensed under the BSD License. See the accompanying LICENSE file for terms.
  */
-/* global before, after, describe, it, require */
+/* global before, after, describe, it */
 import { expect } from 'chai';
 import React from 'react';
 import { provideContext, createElementWithContext }
