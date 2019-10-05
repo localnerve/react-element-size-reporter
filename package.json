@@ -1,6 +1,6 @@
 {
   "name": "react-element-size-reporter",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Higher order React components to report contained DOM element sizes",
   "main": "lib",
   "scripts": {
@@ -27,6 +27,9 @@
     "resize",
     "cloudinary"
   ],
+  "browserslist": [
+    "defaults"
+  ],
   "author": "Alex Grant (@localnerve)",
   "license": "BSD-3-Clause",
   "bugs": {
@@ -42,34 +45,34 @@
     "test"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.0.0",
-    "babel-eslint": "^10.0.0",
-    "babel-plugin-istanbul": "^5.0.0",
-    "chai": "^4.0.0",
-    "coveralls": "^3.0.0",
-    "cross-env": "^5.0.0",
-    "eslint": "^6.0.1",
-    "eslint-plugin-react": "^7.14.2",
+    "@babel/register": "^7.6.2",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-istanbul": "^5.2.0",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.6",
+    "cross-env": "^6.0.0",
+    "eslint": "^6.5.1",
+    "eslint-plugin-react": "^7.16.0",
     "fluxible": "^1.4.0",
-    "fluxible-addons-react": "^0.2.13",
+    "fluxible-addons-react": "^0.2.16",
     "jsdom": "^15.1.1",
-    "mocha": "^6.1.2",
+    "mocha": "^6.2.1",
     "mockery": "^2.0.0",
-    "nyc": "^14.0.0",
+    "nyc": "^14.1.1",
     "precommit-hook": "^3.0.0",
-    "react-dom": "^16.8.1",
-    "rimraf": "^2.6.2"
+    "react-dom": "^16.10.2",
+    "rimraf": "^3.0.0"
   },
   "dependencies": {
-    "inherits": "^2.0.3",
-    "lodash": "^4.17.10",
-    "react": "^16.8.1",
-    "prop-types": "^15.5.0",
-    "element-size-reporter": "^0.7.2"
+    "element-size-reporter": "^0.7.3",
+    "inherits": "^2.0.4",
+    "lodash.debounce": "^4.0.8",
+    "prop-types": "^15.7.2",
+    "react": "^16.10.2"
   },
   "engines": {
     "node": ">= 8"

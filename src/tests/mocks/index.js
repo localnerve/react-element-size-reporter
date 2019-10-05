@@ -30,7 +30,7 @@ function mockModuleEnd (mocks) {
 [{
   name: 'windowResizeReporter',
   mocks: [{
-    pattern: 'lodash/debounce',
+    pattern: 'lodash.debounce',
     module: debounce
   },{
     pattern: 'element-size-reporter',

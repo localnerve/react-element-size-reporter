@@ -10,7 +10,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import inherits from 'inherits';
-import debounce from 'lodash/debounce';
+import debounce from 'lodash.debounce';
 import createSizeReporter from 'element-size-reporter';
 
 const defaultResizeWait = 100;

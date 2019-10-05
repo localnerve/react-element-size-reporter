@@ -94,9 +94,11 @@ describe('react size reporter', () => {
 
     it('should throw if no actionCreator defined', () => {
       const el = React.createElement(createStandardTestComponent());
+      console.log('--- start expect error ---');
       expect(function () {
         testUtils.renderIntoDocument(el);
       }).to.throw(Error);
+      console.log('--- end expect error ---');
     });
 
     it('should supply some sort of report data object', (done) => {
@@ -115,7 +117,7 @@ describe('react size reporter', () => {
       before('options', function () {
         this.timeout(10000);
         mocks.windowResizeReporter.begin();
-        mockDebounce = require('lodash/debounce');
+        mockDebounce = require('lodash.debounce');
         mockSizeReporter = require('element-size-reporter');
         mockWindowResizeReporter =
           require('../../lib/window-resize').windowResizeReporter;
