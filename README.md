@@ -1,6 +1,6 @@
 # React Element Size Reporter
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/localnerve/react-element-size-reporter.svg)](https://greenkeeper.io/)
+
 
 [![npm version](https://badge.fury.io/js/react-element-size-reporter.svg)](http://badge.fury.io/js/react-element-size-reporter)
 [![Build Status](https://travis-ci.org/localnerve/react-element-size-reporter.svg?branch=master)](https://travis-ci.org/localnerve/react-element-size-reporter)
