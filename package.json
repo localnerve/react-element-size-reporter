@@ -1,6 +1,6 @@
 {
   "name": "react-element-size-reporter",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "Higher order React components to report contained DOM element sizes",
   "main": "lib",
   "scripts": {
@@ -59,12 +59,12 @@
     "eslint-plugin-react": "^7.18.3",
     "fluxible": "^1.4.0",
     "fluxible-addons-react": "^0.2.16",
-    "jsdom": "^16.1.0",
+    "jsdom": "^16.2.2",
     "mocha": "^7.0.1",
     "mockery": "^2.0.0",
     "nyc": "^15.0.0",
     "precommit-hook": "^3.0.0",
-    "react-dom": "^16.10.2",
+    "react-dom": "^16.13.1",
     "rimraf": "^3.0.0"
   },
   "dependencies": {
@@ -72,7 +72,7 @@
     "inherits": "^2.0.4",
     "lodash.debounce": "^4.0.8",
     "prop-types": "^15.7.2",
-    "react": "^16.10.2"
+    "react": "^16.13.1"
   },
   "engines": {
     "node": ">= 10"
