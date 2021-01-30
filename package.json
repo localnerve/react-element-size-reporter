@@ -1,6 +1,6 @@
 {
   "name": "react-element-size-reporter",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "description": "Higher order React components to report contained DOM element sizes",
   "main": "lib",
   "scripts": {
@@ -45,34 +45,34 @@
     "test"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.6.2",
-    "@babel/core": "^7.6.2",
-    "@babel/preset-env": "^7.6.2",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.6.2",
-    "babel-eslint": "^10.0.3",
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@babel/register": "^7.12.10",
+    "babel-eslint": "^10.1.0",
     "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
-    "coveralls": "^3.0.6",
-    "cross-env": "^7.0.0",
-    "eslint": "^6.5.1",
-    "eslint-plugin-react": "^7.18.3",
+    "coveralls": "^3.1.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.18.0",
+    "eslint-plugin-react": "^7.22.0",
     "fluxible": "^1.4.0",
     "fluxible-addons-react": "^0.2.16",
-    "jsdom": "^16.2.2",
-    "mocha": "^7.0.1",
+    "jsdom": "^16.4.0",
+    "mocha": "^8.2.1",
     "mockery": "^2.0.0",
-    "nyc": "^15.0.0",
+    "nyc": "^15.1.0",
     "precommit-hook": "^3.0.0",
-    "react-dom": "^16.13.1",
-    "rimraf": "^3.0.0"
+    "react-dom": "^16.14.0",
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
-    "element-size-reporter": "^0.8.4",
+    "element-size-reporter": "^0.8.5",
     "inherits": "^2.0.4",
     "lodash.debounce": "^4.0.8",
     "prop-types": "^15.7.2",
-    "react": "^16.13.1"
+    "react": "^16.14.0"
   },
   "engines": {
     "node": ">= 10"
