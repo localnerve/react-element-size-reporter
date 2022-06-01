@@ -1,12 +1,12 @@
 {
   "name": "react-element-size-reporter",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Higher order React components to report contained DOM element sizes",
   "main": "lib",
   "scripts": {
     "test": "npm run lint && mocha src/tests/unit --recursive --reporter spec --require @babel/register",
     "test:debug": "rimraf output/ && babel ./src -d output -s inline && mocha output/tests/unit --recursive --reporter spec --inspect-brk",
-    "test:cover": "rimraf .nyc_output/ && cross-env BABEL_ENV=cover NYC_CWD=src nyc --reporter=lcov npm test",
+    "test:cover": "c8 -- npm test",
     "build": "npm test && babel src/lib/ -d lib/",
     "lint": "eslint .",
     "prepublishOnly": "npm run build",
@@ -36,11 +36,6 @@
     "url": "https://github.com/localnerve/react-element-size-reporter/issues"
   },
   "homepage": "https://github.com/localnerve/react-element-size-reporter#readme",
-  "nyc": {
-    "instrument": false,
-    "sourceMap": false,
-    "report-dir": "coverage"
-  },
   "pre-commit": [
     "test"
   ],
@@ -51,7 +46,7 @@
     "@babel/preset-react": "^7.16.7",
     "@babel/register": "^7.17.7",
     "@babel/eslint-parser": "^7.17.0",
-    "babel-plugin-istanbul": "^6.1.1",
+    "c8": "^7.11.3",
     "chai": "^4.3.6",
     "coveralls": "^3.1.1",
     "cross-env": "^7.0.3",
@@ -62,13 +57,12 @@
     "jsdom": "^19.0.0",
     "mocha": "^9.2.2",
     "mockery": "^2.1.0",
-    "nyc": "^15.1.0",
     "precommit-hook": "^3.0.0",
     "react-dom": "^17.0.2",
     "rimraf": "^3.0.2"
   },
   "dependencies": {
-    "element-size-reporter": "^0.11.1",
+    "element-size-reporter": "^0.11.2",
     "inherits": "^2.0.4",
     "lodash.debounce": "^4.0.8",
     "prop-types": "^15.8.1",
