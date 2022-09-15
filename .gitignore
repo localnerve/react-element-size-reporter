@@ -18,8 +18,8 @@ node_modules
 .node_repl_history
 
 # Project specific
+.vscode
 .jshint*
-.nyc_output/
 /coverage
 /output
 /lib
